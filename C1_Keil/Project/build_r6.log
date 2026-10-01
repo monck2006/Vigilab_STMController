@@ -1,0 +1,1130 @@
+*** Using Compiler 'V6.21', folder: 'D:\keil5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+assembling startup_stm32f407xx.s...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Core/Src/protocol.c(4): warning: In file included from...../Core/Inc\protocol.h(66): warning: padding struct 'proto_parser_t' with 3 bytes to align 'ok_cnt' [-Wpadded]
+   66 |     uint32_t ok_cnt;
+      |              ^
+../Core/Src/protocol.c(117): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+  117 |         uint16_t rx_crc = (uint16_t)(p->buf[p->idx] | ((uint16_t)byte << 8));
+      |                  ^
+2 warnings generated.
+compiling protocol.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Core/Src/encoder.c(6): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Core/Src/encoder.c(6): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(344): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(316): warning: padding struct 'TIM_HandleTypeDef' with 3 bytes to align 'hdma' [-Wpadded]
+  316 |   DMA_HandleTypeDef           *hdma[7];      /*!< DMA Handlers array
+      |                                ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(310): warning: padding size of 'TIM_HandleTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  310 | typedef struct
+      |         ^
+../Core/Src/encoder.c(6): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(232): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_dma.h(149): warning: padding struct 'struct __DMA_HandleTypeDef' with 2 bytes to align 'Parent' [-Wpadded]
+  149 |   void                       *Parent;                                                          /*!< Parent object state                    */ 
+      |                               ^
+../Core/Src/encoder.c(51): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+   51 |         float v = (float)d * MM_PER_COUNT * (1000.0f / (float)dt_ms);
+      |               ^
+../Core/Src/encoder.c(74): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+   74 |     float mm = (float)s_odo_cnt[m] * MM_PER_COUNT;
+      |           ^
+8 warnings generated.
+compiling encoder.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Core/Src/motor.c(12): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Core/Src/motor.c(12): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(344): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(316): warning: padding struct 'TIM_HandleTypeDef' with 3 bytes to align 'hdma' [-Wpadded]
+  316 |   DMA_HandleTypeDef           *hdma[7];      /*!< DMA Handlers array
+      |                                ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(310): warning: padding size of 'TIM_HandleTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  310 | typedef struct
+      |         ^
+../Core/Src/motor.c(12): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(232): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_dma.h(149): warning: padding struct 'struct __DMA_HandleTypeDef' with 2 bytes to align 'Parent' [-Wpadded]
+  149 |   void                       *Parent;                                                          /*!< Parent object state                    */ 
+      |                               ^
+6 warnings generated.
+compiling motor.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/CMSIS/system_stm32f4xx.c(64): warning: In file included from...../Drivers/CMSIS\stm32f4xx.h(250): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+3 warnings generated.
+compiling system_stm32f4xx.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Core/Src/app_tasks.c(16): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Core/Src/app_tasks.c(13): warning: In file included from...../Core/Inc\protocol.h(66): warning: padding struct 'proto_parser_t' with 3 bytes to align 'ok_cnt' [-Wpadded]
+   66 |     uint32_t ok_cnt;
+      |              ^
+../Core/Src/app_tasks.c(16): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(348): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_uart.h(172): warning: padding struct 'struct __UART_HandleTypeDef' with 1 byte to align 'ErrorCode' [-Wpadded]
+  172 |   __IO uint32_t                 ErrorCode;        /*!< UART Error code                    */
+      |                                 ^
+../Core/Src/app_tasks.c(177): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+  177 |         uint32_t age = s_tick_ms - s_last_rx_ms;
+      |                  ^
+../Core/Src/app_tasks.c(171): warning: function 'Task_Safety' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+  171 | {
+      | ^
+../Core/Src/app_tasks.c(221): warning: function 'Task_Motor' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+  221 | {
+      | ^
+../Core/Src/app_tasks.c(263): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+  263 |     TickType_t last = xTaskGetTickCount();
+      |                ^
+../Core/Src/app_tasks.c(261): warning: function 'Task_Encoder' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+  261 | {
+      | ^
+../Core/Src/app_tasks.c(273): warning: function 'Task_Comm' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+  273 | {
+      | ^
+../Core/Src/app_tasks.c(339): warning: function 'Task_Monitor' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+  339 | {
+      | ^
+../Core/Src/app_tasks.c(369): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  369 |     configASSERT(s_q_rx != NULL);
+      |                                 ^
+../Core/Src/app_tasks.c(16): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(232): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_dma.h(149): warning: padding struct 'struct __DMA_HandleTypeDef' with 2 bytes to align 'Parent' [-Wpadded]
+  149 |   void                       *Parent;                                                          /*!< Parent object state                    */ 
+      |                               ^
+14 warnings generated.
+compiling app_tasks.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Core/Src/stm32f4xx_it.c(7): warning: In file included from...../Core/Inc\main.h(4): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Core/Src/stm32f4xx_it.c(26): warning: function 'HardFault_Handler' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+   26 | {
+      | ^
+../Core/Src/stm32f4xx_it.c(31): warning: function 'MemManage_Handler' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+   31 | {
+      | ^
+../Core/Src/stm32f4xx_it.c(36): warning: function 'BusFault_Handler' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+   36 | {
+      | ^
+../Core/Src/stm32f4xx_it.c(41): warning: function 'UsageFault_Handler' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+   41 | {
+      | ^
+../Core/Src/stm32f4xx_it.c(7): warning: In file included from...../Core/Inc\main.h(4): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(348): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_uart.h(172): warning: padding struct 'struct __UART_HandleTypeDef' with 1 byte to align 'ErrorCode' [-Wpadded]
+  172 |   __IO uint32_t                 ErrorCode;        /*!< UART Error code                    */
+      |                                 ^
+../Core/Src/stm32f4xx_it.c(7): warning: In file included from...../Core/Inc\main.h(4): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(232): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_dma.h(149): warning: padding struct 'struct __DMA_HandleTypeDef' with 2 bytes to align 'Parent' [-Wpadded]
+  149 |   void                       *Parent;                                                          /*!< Parent object state                    */ 
+      |                               ^
+../Core/Src/stm32f4xx_it.c(7): warning: In file included from...../Core/Inc\main.h(4): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(344): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(316): warning: padding struct 'TIM_HandleTypeDef' with 3 bytes to align 'hdma' [-Wpadded]
+  316 |   DMA_HandleTypeDef           *hdma[7];      /*!< DMA Handlers array
+      |                                ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(310): warning: padding size of 'TIM_HandleTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  310 | typedef struct
+      |         ^
+11 warnings generated.
+compiling stm32f4xx_it.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_gpio.c(108): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+3 warnings generated.
+compiling stm32f4xx_hal_gpio.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_rcc_ex.c(25): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_rcc_ex.c(2678): warning: 'switch' missing 'default' label [-Wswitch-default]
+ 2678 |   switch (PeriphClk)
+      |   ^
+4 warnings generated.
+compiling stm32f4xx_hal_rcc_ex.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Core/Src/stm32f4xx_hal_msp.c(4): warning: In file included from...../Core/Inc\main.h(4): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Core/Src/stm32f4xx_hal_msp.c(4): warning: In file included from...../Core/Inc\main.h(4): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(232): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_dma.h(149): warning: padding struct 'struct __DMA_HandleTypeDef' with 2 bytes to align 'Parent' [-Wpadded]
+  149 |   void                       *Parent;                                                          /*!< Parent object state                    */ 
+      |                               ^
+../Core/Src/stm32f4xx_hal_msp.c(4): warning: In file included from...../Core/Inc\main.h(4): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(348): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_uart.h(172): warning: padding struct 'struct __UART_HandleTypeDef' with 1 byte to align 'ErrorCode' [-Wpadded]
+  172 |   __IO uint32_t                 ErrorCode;        /*!< UART Error code                    */
+      |                                 ^
+../Core/Src/stm32f4xx_hal_msp.c(4): warning: In file included from...../Core/Inc\main.h(4): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(344): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(316): warning: padding struct 'TIM_HandleTypeDef' with 3 bytes to align 'hdma' [-Wpadded]
+  316 |   DMA_HandleTypeDef           *hdma[7];      /*!< DMA Handlers array
+      |                                ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(310): warning: padding size of 'TIM_HandleTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  310 | typedef struct
+      |         ^
+7 warnings generated.
+compiling stm32f4xx_hal_msp.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal.c(36): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal.c(95): warning: no previous extern declaration for non-static variable 'uwTickPrio' [-Wmissing-variable-declarations]
+   95 | uint32_t uwTickPrio   = (1UL << __NVIC_PRIO_BITS); /* Invalid PRIO */
+      |          ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal.c(95): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   95 | uint32_t uwTickPrio   = (1UL << __NVIC_PRIO_BITS); /* Invalid PRIO */
+      | ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal.c(96): warning: no previous extern declaration for non-static variable 'uwTickFreq' [-Wmissing-variable-declarations]
+   96 | HAL_TickFreqTypeDef uwTickFreq = HAL_TICK_FREQ_DEFAULT;  /* 1KHz */
+      |                     ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal.c(96): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   96 | HAL_TickFreqTypeDef uwTickFreq = HAL_TICK_FREQ_DEFAULT;  /* 1KHz */
+      | ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal.c(94): warning: no previous extern declaration for non-static variable 'uwTick' [-Wmissing-variable-declarations]
+   94 | __IO uint32_t uwTick;
+      |               ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal.c(94): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   94 | __IO uint32_t uwTick;
+      |      ^
+6 warnings generated.
+compiling stm32f4xx_hal.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_cortex.c(83): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_cortex.c(217): warning: function 'HAL_NVIC_SystemReset' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+  217 | {
+      | ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_cortex.c(261): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  261 |   __DMB();
+      |          ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_cortex.c(290): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  290 |   __DSB();
+      |          ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_cortex.c(291): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  291 |   __ISB();
+      |          ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_cortex.c(83): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(236): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_cortex.h(54): warning: padding struct 'MPU_Region_InitTypeDef' with 2 bytes to align 'BaseAddress' [-Wpadded]
+   54 |   uint32_t               BaseAddress;           /*!< Specifies the base address of the region to protect.                           */
+      |                          ^
+8 warnings generated.
+compiling stm32f4xx_hal_cortex.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Core/Src/main.c(12): warning: In file included from...../Core/Inc\main.h(4): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Core/Src/main.c(12): warning: In file included from...../Core/Inc\main.h(4): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(348): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_uart.h(172): warning: padding struct 'struct __UART_HandleTypeDef' with 1 byte to align 'ErrorCode' [-Wpadded]
+  172 |   __IO uint32_t                 ErrorCode;        /*!< UART Error code                    */
+      |                                 ^
+../Core/Src/main.c(12): warning: In file included from...../Core/Inc\main.h(4): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(344): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(316): warning: padding struct 'TIM_HandleTypeDef' with 3 bytes to align 'hdma' [-Wpadded]
+  316 |   DMA_HandleTypeDef           *hdma[7];      /*!< DMA Handlers array
+      |                                ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(310): warning: padding size of 'TIM_HandleTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  310 | typedef struct
+      |         ^
+../Core/Src/main.c(12): warning: In file included from...../Core/Inc\main.h(4): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(232): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_dma.h(149): warning: padding struct 'struct __DMA_HandleTypeDef' with 2 bytes to align 'Parent' [-Wpadded]
+  149 |   void                       *Parent;                                                          /*!< Parent object state                    */ 
+      |                               ^
+../Core/Src/main.c(81): warning: function 'vApplicationStackOverflowHook' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+   81 | {
+      | ^
+../Core/Src/main.c(89): warning: function 'vApplicationMallocFailedHook' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+   89 | {
+      | ^
+../Core/Src/main.c(95): warning: function 'Error_Handler' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+   95 | {
+      | ^
+../Core/Src/main.c(18): warning: no previous extern declaration for non-static variable 'huart3' [-Wmissing-variable-declarations]
+   18 | UART_HandleTypeDef huart3;
+      |                    ^
+../Core/Src/main.c(18): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   18 | UART_HandleTypeDef huart3;
+      | ^
+../Core/Src/main.c(19): warning: no previous extern declaration for non-static variable 'hdma_usart3_tx' [-Wmissing-variable-declarations]
+   19 | DMA_HandleTypeDef  hdma_usart3_tx;
+      |                    ^
+../Core/Src/main.c(19): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   19 | DMA_HandleTypeDef  hdma_usart3_tx;
+      | ^
+../Core/Src/main.c(20): warning: no previous extern declaration for non-static variable 'htim2' [-Wmissing-variable-declarations]
+   20 | TIM_HandleTypeDef  htim2;
+      |                    ^
+../Core/Src/main.c(20): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   20 | TIM_HandleTypeDef  htim2;
+      | ^
+../Core/Src/main.c(21): warning: no previous extern declaration for non-static variable 'htim3' [-Wmissing-variable-declarations]
+   21 | TIM_HandleTypeDef  htim3;
+      |                    ^
+../Core/Src/main.c(21): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   21 | TIM_HandleTypeDef  htim3;
+      | ^
+../Core/Src/main.c(22): warning: no previous extern declaration for non-static variable 'htim7' [-Wmissing-variable-declarations]
+   22 | TIM_HandleTypeDef  htim7;
+      |                    ^
+../Core/Src/main.c(22): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   22 | TIM_HandleTypeDef  htim7;
+      | ^
+../Core/Src/main.c(23): warning: no previous extern declaration for non-static variable 'htim8' [-Wmissing-variable-declarations]
+   23 | TIM_HandleTypeDef  htim8;
+      |                    ^
+../Core/Src/main.c(23): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   23 | TIM_HandleTypeDef  htim8;
+      | ^
+../Core/Src/main.c(24): warning: no previous extern declaration for non-static variable 'hiwdg' [-Wmissing-variable-declarations]
+   24 | IWDG_HandleTypeDef hiwdg;
+      |                    ^
+../Core/Src/main.c(24): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   24 | IWDG_HandleTypeDef hiwdg;
+      | ^
+17 warnings generated.
+compiling main.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_rcc.c(69): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+3 warnings generated.
+compiling stm32f4xx_hal_rcc.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_dma.c(98): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_dma.c(98): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(232): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_dma.h(149): warning: padding struct 'struct __DMA_HandleTypeDef' with 2 bytes to align 'Parent' [-Wpadded]
+  149 |   void                       *Parent;                                                          /*!< Parent object state                    */ 
+      |                               ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_dma.c(290): warning: cast from function call of type 'uint32_t' (aka 'unsigned int') to non-matching type 'DMA_Base_Registers *' [-Wbad-function-cast]
+  290 |   regs = (DMA_Base_Registers *)DMA_CalcBaseAndBitshift(hdma);
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_dma.c(352): warning: cast from function call of type 'uint32_t' (aka 'unsigned int') to non-matching type 'DMA_Base_Registers *' [-Wbad-function-cast]
+  352 |   regs = (DMA_Base_Registers *)DMA_CalcBaseAndBitshift(hdma);
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_dma.c(979): warning: enumeration value 'HAL_DMA_XFER_ALL_CB_ID' not explicitly handled in switch [-Wswitch-enum]
+  979 |     switch (CallbackID)
+      |             ^~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_dma.c(1073): warning: default label in switch which covers all enumeration values [-Wcovered-switch-default]
+ 1073 |     default:
+      |     ^
+8 warnings generated.
+compiling stm32f4xx_hal_dma.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_dma_ex.c(40): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_dma_ex.c(40): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(232): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_dma.h(149): warning: padding struct 'struct __DMA_HandleTypeDef' with 2 bytes to align 'Parent' [-Wpadded]
+  149 |   void                       *Parent;                                                          /*!< Parent object state                    */ 
+      |                               ^
+4 warnings generated.
+compiling stm32f4xx_hal_dma_ex.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_tim_ex.c(78): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_tim_ex.c(78): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(344): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(316): warning: padding struct 'TIM_HandleTypeDef' with 3 bytes to align 'hdma' [-Wpadded]
+  316 |   DMA_HandleTypeDef           *hdma[7];      /*!< DMA Handlers array
+      |                                ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(310): warning: padding size of 'TIM_HandleTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  310 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_tim_ex.c(78): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(232): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_dma.h(149): warning: padding struct 'struct __DMA_HandleTypeDef' with 2 bytes to align 'Parent' [-Wpadded]
+  149 |   void                       *Parent;                                                          /*!< Parent object state                    */ 
+      |                               ^
+6 warnings generated.
+compiling stm32f4xx_hal_tim_ex.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_iwdg.c(88): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+3 warnings generated.
+compiling stm32f4xx_hal_iwdg.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_pwr_ex.c(25): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+3 warnings generated.
+compiling stm32f4xx_hal_pwr_ex.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_pwr.c(26): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_pwr.c(365): warning: unused parameter 'Regulator' [-Wunused-parameter]
+  365 | void HAL_PWR_EnterSLEEPMode(uint32_t Regulator, uint8_t SLEEPEntry)
+      |                                      ^
+4 warnings generated.
+compiling stm32f4xx_hal_pwr.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_uart.c(219): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_uart.c(219): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(348): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_uart.h(172): warning: padding struct 'struct __UART_HandleTypeDef' with 1 byte to align 'ErrorCode' [-Wpadded]
+  172 |   __IO uint32_t                 ErrorCode;        /*!< UART Error code                    */
+      |                                 ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_uart.c(219): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(232): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_dma.h(149): warning: padding struct 'struct __DMA_HandleTypeDef' with 2 bytes to align 'Parent' [-Wpadded]
+  149 |   void                       *Parent;                                                          /*!< Parent object state                    */ 
+      |                               ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_uart.c(1052): warning: cast from 'uint8_t *' (aka 'unsigned char *') to 'uint16_t *' (aka 'unsigned short *') increases required alignment from 1 to 2 [-Wcast-align]
+ 1052 |         tmp = (uint16_t *) pData;
+      |               ^~~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_uart.c(1136): warning: cast from 'uint8_t *' (aka 'unsigned char *') to 'uint16_t *' (aka 'unsigned short *') increases required alignment from 1 to 2 [-Wcast-align]
+ 1136 |         tmp = (uint16_t *) pData;
+      |               ^~~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_uart.c(2906): warning: cast from 'uint8_t *' (aka 'unsigned char *') to 'uint16_t *' (aka 'unsigned short *') increases required alignment from 1 to 2 [-Wcast-align]
+ 2906 |       tmp = (uint16_t *) huart->pTxBuffPtr;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_uart.c(2978): warning: cast from 'uint8_t *' (aka 'unsigned char *') to 'uint16_t *' (aka 'unsigned short *') increases required alignment from 1 to 2 [-Wcast-align]
+ 2978 |       tmp = (uint16_t *) huart->pRxBuffPtr;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+9 warnings generated.
+compiling stm32f4xx_hal_uart.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash.c(78): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash.c(78): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(276): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_flash.h(62): warning: padding struct 'FLASH_ProcessTypeDef' with 3 bytes to align 'NbSectorsToErase' [-Wpadded]
+   62 |   __IO uint32_t               NbSectorsToErase;   /*Internal variable to save the remaining sectors to erase in IT context*/
+      |                               ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_flash.h(66): warning: padding struct 'FLASH_ProcessTypeDef' with 3 bytes to align 'Sector' [-Wpadded]
+   66 |   __IO uint32_t               Sector;             /*Internal variable to define the current sector which is erasing*/
+      |                               ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_flash.h(74): warning: padding struct 'FLASH_ProcessTypeDef' with 3 bytes to align 'ErrorCode' [-Wpadded]
+   74 |   __IO uint32_t               ErrorCode;          /* FLASH error code                    */
+      |                               ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash.c(106): warning: no previous extern declaration for non-static variable 'pFlash' [-Wmissing-variable-declarations]
+  106 | FLASH_ProcessTypeDef pFlash;
+      |                      ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash.c(106): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+  106 | FLASH_ProcessTypeDef pFlash;
+      | ^
+7 warnings generated.
+compiling stm32f4xx_hal_flash.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash_ramfunc.c(49): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+3 warnings generated.
+compiling stm32f4xx_hal_flash_ramfunc.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash_ex.c(64): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash_ex.c(64): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(276): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_flash.h(62): warning: padding struct 'FLASH_ProcessTypeDef' with 3 bytes to align 'NbSectorsToErase' [-Wpadded]
+   62 |   __IO uint32_t               NbSectorsToErase;   /*Internal variable to save the remaining sectors to erase in IT context*/
+      |                               ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_flash.h(66): warning: padding struct 'FLASH_ProcessTypeDef' with 3 bytes to align 'Sector' [-Wpadded]
+   66 |   __IO uint32_t               Sector;             /*Internal variable to define the current sector which is erasing*/
+      |                               ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_flash.h(74): warning: padding struct 'FLASH_ProcessTypeDef' with 3 bytes to align 'ErrorCode' [-Wpadded]
+   74 |   __IO uint32_t               ErrorCode;          /* FLASH error code                    */
+      |                               ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash_ex.c(273): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+  273 |     FLASH_Erase_Sector(pEraseInit->Sector, pEraseInit->VoltageRange);
+      |     ~~~~~~~~~~~~~~~~~~                     ~~~~~~~~~~~~^~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash_ex.c(315): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+  315 |     status = FLASH_OB_RDP_LevelConfig(pOBInit->RDPLevel);
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~^~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash_ex.c(329): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+  329 |     status = FLASH_OB_BOR_LevelConfig(pOBInit->BORLevel);
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~^~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash_ex.c(64): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(276): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_flash.h(297): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_flash_ex.h(69): warning: padding size of 'FLASH_OBProgramInitTypeDef' with 3 bytes to alignment boundary [-Wpadded]
+   69 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash_ex.c(953): warning: unused parameter 'Banks' [-Wunused-parameter]
+  953 | static void FLASH_MassErase(uint8_t VoltageRange, uint32_t Banks)
+      |                                                            ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash_ex.c(1032): warning: unused parameter 'Banks' [-Wunused-parameter]
+ 1032 | static HAL_StatusTypeDef FLASH_OB_EnableWRP(uint32_t WRPSector, uint32_t Banks)
+      |                                                                          ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_flash_ex.c(1068): warning: unused parameter 'Banks' [-Wunused-parameter]
+ 1068 | static HAL_StatusTypeDef FLASH_OB_DisableWRP(uint32_t WRPSector, uint32_t Banks)
+      |                                                                           ^
+13 warnings generated.
+compiling stm32f4xx_hal_flash_ex.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_tim.c(178): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_tim.c(178): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(344): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(316): warning: padding struct 'TIM_HandleTypeDef' with 3 bytes to align 'hdma' [-Wpadded]
+  316 |   DMA_HandleTypeDef           *hdma[7];      /*!< DMA Handlers array
+      |                                ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_tim.h(310): warning: padding size of 'TIM_HandleTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  310 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_tim.c(178): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(232): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_dma.h(149): warning: padding struct 'struct __DMA_HandleTypeDef' with 2 bytes to align 'Parent' [-Wpadded]
+  149 |   void                       *Parent;                                                          /*!< Parent object state                    */ 
+      |                               ^
+6 warnings generated.
+compiling stm32f4xx_hal_tim.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_exti.c(85): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal.h(30): warning: In file included from...../Drivers/CMSIS\stm32f4xx_hal_conf.h(368): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_hal_pcd.h(29): warning: In file included from...../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(186): warning: padding struct 'USB_OTG_HCTypeDef' with 1 byte to align 'xfer_buff' [-Wpadded]
+  186 |   uint8_t   *xfer_buff;         /*!< Pointer to transfer buffer.                                                */
+      |              ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(198): warning: padding struct 'USB_OTG_HCTypeDef' with 2 bytes to align 'dma_addr' [-Wpadded]
+  198 |   uint32_t  dma_addr;           /*!< 32 bits aligned transfer buffer address.                                   */
+      |             ^
+../Drivers/STM32F4xx_HAL_Driver/inc\stm32f4xx_ll_usb.h(156): warning: padding size of 'USB_OTG_HCTypeDef' with 2 bytes to alignment boundary [-Wpadded]
+  156 | typedef struct
+      |         ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_exti.c(289): warning: enumeration values 'HAL_EXTI_RISING_CB_ID' and 'HAL_EXTI_FALLING_CB_ID' not explicitly handled in switch [-Wswitch-enum]
+  289 |   switch (CallbackID)
+      |           ^~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_exti.c(374): warning: unused parameter 'Edge' [-Wunused-parameter]
+  374 | uint32_t HAL_EXTI_GetPending(EXTI_HandleTypeDef *hexti, uint32_t Edge)
+      |                                                                  ^
+../Drivers/STM32F4xx_HAL_Driver/src/stm32f4xx_hal_exti.c(401): warning: unused parameter 'Edge' [-Wunused-parameter]
+  401 | void HAL_EXTI_ClearPending(EXTI_HandleTypeDef *hexti, uint32_t Edge)
+      |                                                                ^
+6 warnings generated.
+compiling stm32f4xx_hal_exti.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+compiling list.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Middlewares/FreeRTOS/portable/GCC/ARM_CM4F/port.c(244): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  244 |     configASSERT( uxCriticalNesting == ~0UL );
+      |                                              ^
+../Middlewares/FreeRTOS/portable/GCC/ARM_CM4F/port.c(310): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  310 |     configASSERT( portCPUID != portCORTEX_M7_r0p1_ID );
+      |                                                       ^
+../Middlewares/FreeRTOS/portable/GCC/ARM_CM4F/port.c(311): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  311 |     configASSERT( portCPUID != portCORTEX_M7_r0p0_ID );
+      |                                                       ^
+../Middlewares/FreeRTOS/portable/GCC/ARM_CM4F/port.c(342): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  342 |         configASSERT( pxVectorTable[ portVECTOR_INDEX_SVC ] == vPortSVCHandler );
+      |                                                                                 ^
+../Middlewares/FreeRTOS/portable/GCC/ARM_CM4F/port.c(343): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  343 |         configASSERT( pxVectorTable[ portVECTOR_INDEX_PENDSV ] == xPortPendSVHandler );
+      |                                                                                       ^
+../Middlewares/FreeRTOS/portable/GCC/ARM_CM4F/port.c(378): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  378 |         configASSERT( ucMaxSysCallPriority );
+      |                                             ^
+../Middlewares/FreeRTOS/portable/GCC/ARM_CM4F/port.c(382): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  382 |         configASSERT( ( configMAX_SYSCALL_INTERRUPT_PRIORITY & ( ~ucMaxPriorityValue ) ) == 0U );
+      |                                                                                                 ^
+../Middlewares/FreeRTOS/portable/GCC/ARM_CM4F/port.c(412): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  412 |             configASSERT( ( configMAX_SYSCALL_INTERRUPT_PRIORITY & 0x1U ) == 0U );
+      |                                                                                  ^
+../Middlewares/FreeRTOS/portable/GCC/ARM_CM4F/port.c(471): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  471 |     configASSERT( uxCriticalNesting == 1000UL );
+      |                                                ^
+../Middlewares/FreeRTOS/portable/GCC/ARM_CM4F/port.c(487): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  487 |         configASSERT( ( portNVIC_INT_CTRL_REG & portVECTACTIVE_MASK ) == 0 );
+      |                                                                             ^
+../Middlewares/FreeRTOS/portable/GCC/ARM_CM4F/port.c(494): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  494 |     configASSERT( uxCriticalNesting );
+      |                                      ^
+../Middlewares/FreeRTOS/portable/GCC/ARM_CM4F/port.c(888): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  888 |             configASSERT( ucCurrentPriority >= ucMaxSysCallPriority );
+      |                                                                      ^
+../Middlewares/FreeRTOS/portable/GCC/ARM_CM4F/port.c(904): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  904 |         configASSERT( ( portAIRCR_REG & portPRIORITY_GROUP_MASK ) <= ulMaxPRIGROUPValue );
+      |                                                                                          ^
+13 warnings generated.
+compiling port.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Middlewares/FreeRTOS/timers.c(326): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  326 |         configASSERT( xReturn );
+      |                                ^
+../Middlewares/FreeRTOS/timers.c(83): warning: padding size of 'struct tmrTimerControl' with 3 bytes to alignment boundary [-Wpadded]
+   83 |     typedef struct tmrTimerControl                                               /* The old naming convention is used to prevent breaking kernel aware debuggers. */
+      |                    ^
+../Middlewares/FreeRTOS/timers.c(425): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  425 |         configASSERT( ( xTimerPeriodInTicks > 0 ) );
+      |                                                    ^
+../Middlewares/FreeRTOS/timers.c(472): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  472 |             configASSERT( ( xCommandID >= tmrCOMMAND_START_DONT_TRACE ) && ( xCommandID < tmrFIRST_FROM_ISR_COMMAND ) );
+      |                                                                                                                        ^
+../Middlewares/FreeRTOS/timers.c(521): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  521 |             configASSERT( xCommandID >= tmrFIRST_FROM_ISR_COMMAND );
+      |                                                                    ^
+../Middlewares/FreeRTOS/timers.c(547): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  547 |         configASSERT( ( xTimerTaskHandle != NULL ) );
+      |                                                     ^
+../Middlewares/FreeRTOS/timers.c(561): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  561 |         configASSERT( xTimer );
+      |                               ^
+../Middlewares/FreeRTOS/timers.c(576): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  576 |         configASSERT( xTimer );
+      |                               ^
+../Middlewares/FreeRTOS/timers.c(601): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  601 |         configASSERT( xTimer );
+      |                               ^
+../Middlewares/FreeRTOS/timers.c(643): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  643 |         configASSERT( xTimer );
+      |                               ^
+../Middlewares/FreeRTOS/timers.c(689): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  689 |         configASSERT( xTimer );
+      |                               ^
+../Middlewares/FreeRTOS/timers.c(747): warning: function 'prvTimerTask' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+  747 |     {
+      |     ^
+../Middlewares/FreeRTOS/timers.c(826): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  826 |                         taskYIELD_WITHIN_API();
+      |                                               ^
+../Middlewares/FreeRTOS/timers.c(1040): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1040 |                             configASSERT( ( pxTimer->xTimerPeriodInTicks > 0 ) );
+      |                                                                                 ^
+../Middlewares/FreeRTOS/timers.c(1174): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1174 |         configASSERT( xTimer );
+      |                               ^
+../Middlewares/FreeRTOS/timers.c(1203): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1203 |         configASSERT( xTimer );
+      |                               ^
+../Middlewares/FreeRTOS/timers.c(1224): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1224 |         configASSERT( xTimer );
+      |                               ^
+17 warnings generated.
+compiling timers.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Middlewares/FreeRTOS/portable/MemMang/heap_4.c(246): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  246 |                 heapVALIDATE_BLOCK_POINTER( pxBlock );
+      |                                                      ^
+../Middlewares/FreeRTOS/portable/MemMang/heap_4.c(252): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  252 |                     heapVALIDATE_BLOCK_POINTER( pxBlock );
+      |                                                          ^
+../Middlewares/FreeRTOS/portable/MemMang/heap_4.c(262): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  262 |                     heapVALIDATE_BLOCK_POINTER( pvReturn );
+      |                                                           ^
+../Middlewares/FreeRTOS/portable/MemMang/heap_4.c(270): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  270 |                     configASSERT( heapSUBTRACT_WILL_UNDERFLOW( pxBlock->xBlockSize, xWantedSize ) == 0 );
+      |                                                                                                         ^
+../Middlewares/FreeRTOS/portable/MemMang/heap_4.c(279): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  279 |                         configASSERT( ( ( ( size_t ) pxNewBlockLink ) & portBYTE_ALIGNMENT_MASK ) == 0 );
+      |                                                                                                         ^
+../Middlewares/FreeRTOS/portable/MemMang/heap_4.c(349): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  349 |     configASSERT( ( ( ( size_t ) pvReturn ) & ( size_t ) portBYTE_ALIGNMENT_MASK ) == 0 );
+      |                                                                                          ^
+../Middlewares/FreeRTOS/portable/MemMang/heap_4.c(368): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  368 |         heapVALIDATE_BLOCK_POINTER( pxLink );
+      |                                             ^
+../Middlewares/FreeRTOS/portable/MemMang/heap_4.c(369): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  369 |         configASSERT( heapBLOCK_IS_ALLOCATED( pxLink ) != 0 );
+      |                                                              ^
+../Middlewares/FreeRTOS/portable/MemMang/heap_4.c(370): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  370 |         configASSERT( pxLink->pxNextFreeBlock == heapPROTECT_BLOCK_POINTER( NULL ) );
+      |                                                                                     ^
+../Middlewares/FreeRTOS/portable/MemMang/heap_4.c(518): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  518 |         heapVALIDATE_BLOCK_POINTER( pxIterator );
+      |                                                 ^
+10 warnings generated.
+compiling heap_4.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Middlewares/FreeRTOS/queue.c(311): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  311 |     configASSERT( pxQueue );
+      |                            ^
+../Middlewares/FreeRTOS/queue.c(338): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  338 |                         queueYIELD_IF_USING_PREEMPTION();
+      |                                                         ^
+../Middlewares/FreeRTOS/queue.c(364): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  364 |     configASSERT( xReturn != pdFAIL );
+      |                                      ^
+../Middlewares/FreeRTOS/queue.c(103): warning: padding size of 'struct QueueDefinition' with 2 bytes to alignment boundary [-Wpadded]
+  103 | typedef struct QueueDefinition /* The old naming convention is used to prevent breaking kernel aware debuggers. */
+      |                ^
+../Middlewares/FreeRTOS/queue.c(557): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  557 |             configASSERT( pxNewQueue );
+      |                                       ^
+../Middlewares/FreeRTOS/queue.c(766): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  766 |         configASSERT( pxMutex );
+      |                                ^
+../Middlewares/FreeRTOS/queue.c(826): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  826 |         configASSERT( pxMutex );
+      |                                ^
+../Middlewares/FreeRTOS/queue.c(838): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  838 |             configASSERT( pxMutex->u.xSemaphore.uxRecursiveCallCount );
+      |                                                                       ^
+../Middlewares/FreeRTOS/queue.c(854): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  854 |                 configASSERT( pxMutex->u.xSemaphore.uxRecursiveCallCount );
+      |                                                                           ^
+../Middlewares/FreeRTOS/queue.c(937): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  937 |             configASSERT( xHandle );
+      |                                    ^
+../Middlewares/FreeRTOS/queue.c(960): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  960 |     configASSERT( pxQueue );
+      |                            ^
+../Middlewares/FreeRTOS/queue.c(961): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  961 |     configASSERT( !( ( pvItemToQueue == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
+      |                                                                                                    ^
+../Middlewares/FreeRTOS/queue.c(962): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  962 |     configASSERT( !( ( xCopyPosition == queueOVERWRITE ) && ( pxQueue->uxLength != 1 ) ) );
+      |                                                                                           ^
+../Middlewares/FreeRTOS/queue.c(965): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  965 |         configASSERT( !( ( xTaskGetSchedulerState() == taskSCHEDULER_SUSPENDED ) && ( xTicksToWait != 0 ) ) );
+      |                                                                                                              ^
+../Middlewares/FreeRTOS/queue.c(1055): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1055 |                             queueYIELD_IF_USING_PREEMPTION();
+      |                                                             ^
+../Middlewares/FreeRTOS/queue.c(1068): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1068 |                         queueYIELD_IF_USING_PREEMPTION();
+      |                                                         ^
+../Middlewares/FreeRTOS/queue.c(1142): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1142 |                     taskYIELD_WITHIN_API();
+      |                                           ^
+../Middlewares/FreeRTOS/queue.c(1178): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1178 |     configASSERT( ( pxQueue != NULL ) && !( ( pvItemToQueue == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
+      |                                                                                                                           ^
+../Middlewares/FreeRTOS/queue.c(1179): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1179 |     configASSERT( ( pxQueue != NULL ) && !( ( xCopyPosition == queueOVERWRITE ) && ( pxQueue->uxLength != 1 ) ) );
+      |                                                                                                                  ^
+../Middlewares/FreeRTOS/queue.c(1355): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1355 |     configASSERT( ( pxQueue != NULL ) && ( pxQueue->uxItemSize == 0 ) );
+      |                                                                        ^
+../Middlewares/FreeRTOS/queue.c(1360): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1360 |     configASSERT( ( pxQueue != NULL ) && !( ( pxQueue->uxQueueType == queueQUEUE_IS_MUTEX ) && ( pxQueue->u.xSemaphore.xMutexHolder != NULL ) ) );
+      |                                                                                                                                                  ^
+../Middlewares/FreeRTOS/queue.c(1520): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1520 |     configASSERT( ( pxQueue ) );
+      |                                ^
+../Middlewares/FreeRTOS/queue.c(1524): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1524 |     configASSERT( !( ( ( pvBuffer ) == NULL ) && ( ( pxQueue )->uxItemSize != ( UBaseType_t ) 0U ) ) );
+      |                                                                                                       ^
+../Middlewares/FreeRTOS/queue.c(1529): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1529 |         configASSERT( !( ( xTaskGetSchedulerState() == taskSCHEDULER_SUSPENDED ) && ( xTicksToWait != 0 ) ) );
+      |                                                                                                              ^
+../Middlewares/FreeRTOS/queue.c(1555): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1555 |                         queueYIELD_IF_USING_PREEMPTION();
+      |                                                         ^
+../Middlewares/FreeRTOS/queue.c(1621): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1621 |                     taskYIELD_WITHIN_API();
+      |                                           ^
+../Middlewares/FreeRTOS/queue.c(1673): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1673 |     configASSERT( ( pxQueue ) );
+      |                                ^
+../Middlewares/FreeRTOS/queue.c(1677): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1677 |     configASSERT( pxQueue->uxItemSize == 0 );
+      |                                             ^
+../Middlewares/FreeRTOS/queue.c(1682): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1682 |         configASSERT( !( ( xTaskGetSchedulerState() == taskSCHEDULER_SUSPENDED ) && ( xTicksToWait != 0 ) ) );
+      |                                                                                                              ^
+../Middlewares/FreeRTOS/queue.c(1725): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1725 |                         queueYIELD_IF_USING_PREEMPTION();
+      |                                                         ^
+../Middlewares/FreeRTOS/queue.c(1811): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1811 |                     taskYIELD_WITHIN_API();
+      |                                           ^
+../Middlewares/FreeRTOS/queue.c(1897): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1897 |     configASSERT( ( pxQueue != NULL ) && !( ( ( pvBuffer ) == NULL ) && ( ( pxQueue )->uxItemSize != ( UBaseType_t ) 0U ) ) );
+      |                                                                                                                              ^
+../Middlewares/FreeRTOS/queue.c(1902): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1902 |         configASSERT( !( ( xTaskGetSchedulerState() == taskSCHEDULER_SUSPENDED ) && ( xTicksToWait != 0 ) ) );
+      |                                                                                                              ^
+../Middlewares/FreeRTOS/queue.c(1934): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1934 |                         queueYIELD_IF_USING_PREEMPTION();
+      |                                                         ^
+../Middlewares/FreeRTOS/queue.c(2001): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2001 |                     taskYIELD_WITHIN_API();
+      |                                           ^
+../Middlewares/FreeRTOS/queue.c(2049): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2049 |     configASSERT( pxQueue );
+      |                            ^
+../Middlewares/FreeRTOS/queue.c(2050): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2050 |     configASSERT( !( ( pvBuffer == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
+      |                                                                                               ^
+../Middlewares/FreeRTOS/queue.c(2149): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2149 |     configASSERT( ( pxQueue != NULL ) && !( ( pvBuffer == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
+      |                                                                                                                      ^
+../Middlewares/FreeRTOS/queue.c(2150): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2150 |     configASSERT( ( pxQueue != NULL ) && ( pxQueue->uxItemSize != 0 ) ); /* Can't peek a semaphore. */
+      |                                                                        ^
+../Middlewares/FreeRTOS/queue.c(2206): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2206 |     configASSERT( xQueue );
+      |                           ^
+../Middlewares/FreeRTOS/queue.c(2227): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2227 |     configASSERT( pxQueue );
+      |                            ^
+../Middlewares/FreeRTOS/queue.c(2248): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2248 |     configASSERT( pxQueue );
+      |                            ^
+../Middlewares/FreeRTOS/queue.c(2263): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2263 |     configASSERT( pxQueue );
+      |                            ^
+../Middlewares/FreeRTOS/queue.c(2264): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2264 |     configASSERT( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToSend ) ) );
+      |                                                                           ^
+../Middlewares/FreeRTOS/queue.c(2265): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2265 |     configASSERT( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToReceive ) ) );
+      |                                                                              ^
+../Middlewares/FreeRTOS/queue.c(2647): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2647 |     configASSERT( pxQueue );
+      |                            ^
+../Middlewares/FreeRTOS/queue.c(2692): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2692 |     configASSERT( pxQueue );
+      |                            ^
+../Middlewares/FreeRTOS/queue.c(3022): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 3022 |         configASSERT( xQueue );
+      |                               ^
+../Middlewares/FreeRTOS/queue.c(3072): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 3072 |         configASSERT( xQueue );
+      |                               ^
+../Middlewares/FreeRTOS/queue.c(3106): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 3106 |         configASSERT( xQueue );
+      |                               ^
+../Middlewares/FreeRTOS/queue.c(171): warning: no previous extern declaration for non-static variable 'xQueueRegistry' [-Wmissing-variable-declarations]
+  171 |     PRIVILEGED_DATA QueueRegistryItem_t xQueueRegistry[ configQUEUE_REGISTRY_SIZE ];
+      |                                         ^
+../Middlewares/FreeRTOS/queue.c(171): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+  171 |     PRIVILEGED_DATA QueueRegistryItem_t xQueueRegistry[ configQUEUE_REGISTRY_SIZE ];
+      |                     ^
+51 warnings generated.
+compiling queue.c...
+armclang: warning: no such include directory: 'Drivers/CMSIS/Device/ST/STM32F4xx/Include' [-Wmissing-include-dirs]
+../Middlewares/FreeRTOS/tasks.c(465): warning: no previous extern declaration for non-static variable 'pxCurrentTCB' [-Wmissing-variable-declarations]
+  465 |     portDONT_DISCARD PRIVILEGED_DATA TCB_t * volatile pxCurrentTCB = NULL;
+      |                                                       ^
+../Middlewares/FreeRTOS/tasks.c(465): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+  465 |     portDONT_DISCARD PRIVILEGED_DATA TCB_t * volatile pxCurrentTCB = NULL;
+      |                                      ^
+../Middlewares/FreeRTOS/tasks.c(377): warning: padding size of 'struct tskTaskControlBlock' with 3 bytes to alignment boundary [-Wpadded]
+  377 | typedef struct tskTaskControlBlock       /* The old naming convention is used to prevent breaking kernel aware debuggers. */
+      |                ^
+../Middlewares/FreeRTOS/tasks.c(1849): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1849 |         configASSERT( ( ( ( portPOINTER_SIZE_TYPE ) pxTopOfStack & ( portPOINTER_SIZE_TYPE ) portBYTE_ALIGNMENT_MASK ) == 0U ) );
+      |                                                                                                                                 ^
+../Middlewares/FreeRTOS/tasks.c(1903): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 1903 |     configASSERT( uxPriority < configMAX_PRIORITIES );
+      |                                                      ^
+../Middlewares/FreeRTOS/tasks.c(2002): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2002 |             configASSERT( ( ( portPOINTER_SIZE_TYPE ) ( pxTopOfStack - pxNewTCB->pxTopOfStack ) ) < ( ( portPOINTER_SIZE_TYPE ) uxStackDepth ) );
+      |                                                                                                                                                 ^
+../Middlewares/FreeRTOS/tasks.c(2225): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2225 |             configASSERT( pxTCB != NULL );
+      |                                          ^
+../Middlewares/FreeRTOS/tasks.c(2346): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2346 |                     configASSERT( uxSchedulerSuspended == 0 );
+      |                                                              ^
+../Middlewares/FreeRTOS/tasks.c(2347): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2347 |                     taskYIELD_WITHIN_API();
+      |                                           ^
+../Middlewares/FreeRTOS/tasks.c(2372): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2372 |         configASSERT( pxPreviousWakeTime );
+      |                                           ^
+../Middlewares/FreeRTOS/tasks.c(2373): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2373 |         configASSERT( ( xTimeIncrement > 0U ) );
+      |                                                ^
+../Middlewares/FreeRTOS/tasks.c(2380): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2380 |             configASSERT( uxSchedulerSuspended == 1U );
+      |                                                       ^
+../Middlewares/FreeRTOS/tasks.c(2401): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2401 |             taskYIELD_WITHIN_API();
+      |                                   ^
+../Middlewares/FreeRTOS/tasks.c(2422): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2422 |         configASSERT( pxPreviousWakeTime );
+      |                                           ^
+../Middlewares/FreeRTOS/tasks.c(2423): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2423 |         configASSERT( ( xTimeIncrement > 0U ) );
+      |                                                ^
+../Middlewares/FreeRTOS/tasks.c(2431): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2431 |             configASSERT( uxSchedulerSuspended == 1U );
+      |                                                       ^
+../Middlewares/FreeRTOS/tasks.c(2489): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2489 |             taskYIELD_WITHIN_API();
+      |                                   ^
+../Middlewares/FreeRTOS/tasks.c(2517): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2517 |                 configASSERT( uxSchedulerSuspended == 1U );
+      |                                                           ^
+../Middlewares/FreeRTOS/tasks.c(2541): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2541 |             taskYIELD_WITHIN_API();
+      |                                   ^
+../Middlewares/FreeRTOS/tasks.c(2700): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2700 |             configASSERT( pxTCB != NULL );
+      |                                          ^
+../Middlewares/FreeRTOS/tasks.c(2750): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2750 |             configASSERT( pxTCB != NULL );
+      |                                          ^
+../Middlewares/FreeRTOS/tasks.c(2778): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2778 |             configASSERT( pxTCB != NULL );
+      |                                          ^
+../Middlewares/FreeRTOS/tasks.c(2828): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2828 |             configASSERT( pxTCB != NULL );
+      |                                          ^
+../Middlewares/FreeRTOS/tasks.c(2857): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2857 |         configASSERT( uxNewPriority < configMAX_PRIORITIES );
+      |                                                             ^
+../Middlewares/FreeRTOS/tasks.c(2874): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 2874 |             configASSERT( pxTCB != NULL );
+      |                                          ^
+../Middlewares/FreeRTOS/tasks.c(3208): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 3208 |             configASSERT( pxTCB != NULL );
+      |                                          ^
+../Middlewares/FreeRTOS/tasks.c(3317): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 3317 |                     configASSERT( uxSchedulerSuspended == 0 );
+      |                                                              ^
+../Middlewares/FreeRTOS/tasks.c(3318): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 3318 |                     portYIELD_WITHIN_API();
+      |                                           ^
+../Middlewares/FreeRTOS/tasks.c(3369): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 3369 |         configASSERT( xTask );
+      |                              ^
+../Middlewares/FreeRTOS/tasks.c(3437): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 3437 |         configASSERT( xTaskToResume );
+      |                                      ^
+../Middlewares/FreeRTOS/tasks.c(3499): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 3499 |         configASSERT( xTaskToResume );
+      |                                      ^
+../Middlewares/FreeRTOS/tasks.c(3832): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 3832 |         configASSERT( xReturn != errCOULD_NOT_ALLOCATE_REQUIRED_MEMORY );
+      |                                                                         ^
+../Middlewares/FreeRTOS/tasks.c(4086): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 4086 |             configASSERT( uxSchedulerSuspended != 0U );
+      |                                                       ^
+../Middlewares/FreeRTOS/tasks.c(4288): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 4288 |     configASSERT( pxTCB != NULL );
+      |                                  ^
+../Middlewares/FreeRTOS/tasks.c(4632): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 4632 |             configASSERT( ( xIdleTaskHandles[ 0 ] != NULL ) );
+      |                                                              ^
+../Middlewares/FreeRTOS/tasks.c(4645): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 4645 |         configASSERT( taskVALID_CORE_ID( xCoreID ) == pdTRUE );
+      |                                                               ^
+../Middlewares/FreeRTOS/tasks.c(4649): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 4649 |         configASSERT( ( xIdleTaskHandles[ xCoreID ] != NULL ) );
+      |                                                                ^
+../Middlewares/FreeRTOS/tasks.c(4715): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 4715 |     configASSERT( uxSchedulerSuspended == ( UBaseType_t ) 0U );
+      |                                                               ^
+../Middlewares/FreeRTOS/tasks.c(5407): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 5407 |     configASSERT( pxEventList );
+      |                                ^
+../Middlewares/FreeRTOS/tasks.c(5437): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 5437 |     configASSERT( pxEventList );
+      |                                ^
+../Middlewares/FreeRTOS/tasks.c(5441): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 5441 |     configASSERT( uxSchedulerSuspended != ( UBaseType_t ) 0U );
+      |                                                               ^
+../Middlewares/FreeRTOS/tasks.c(5469): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 5469 |         configASSERT( pxEventList );
+      |                                    ^
+../Middlewares/FreeRTOS/tasks.c(5524): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 5524 |     configASSERT( pxUnblockedTCB );
+      |                                   ^
+../Middlewares/FreeRTOS/tasks.c(5602): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 5602 |     configASSERT( uxSchedulerSuspended != ( UBaseType_t ) 0U );
+      |                                                               ^
+../Middlewares/FreeRTOS/tasks.c(5613): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 5613 |     configASSERT( pxUnblockedTCB );
+      |                                   ^
+../Middlewares/FreeRTOS/tasks.c(5669): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 5669 |     configASSERT( pxTimeOut );
+      |                              ^
+../Middlewares/FreeRTOS/tasks.c(5700): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 5700 |     configASSERT( pxTimeOut );
+      |                              ^
+../Middlewares/FreeRTOS/tasks.c(5701): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 5701 |     configASSERT( pxTicksToWait );
+      |                                  ^
+../Middlewares/FreeRTOS/tasks.c(5960): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 5960 |                 taskYIELD();
+      |                            ^
+../Middlewares/FreeRTOS/tasks.c(5910): warning: function 'prvIdleTask' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+ 5910 | {
+      | ^
+../Middlewares/FreeRTOS/tasks.c(6544): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 6544 |         configASSERT( pxTCB != NULL );
+      |                                      ^
+../Middlewares/FreeRTOS/tasks.c(6861): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 6861 |             configASSERT( pxTCB == pxCurrentTCB );
+      |                                                  ^
+../Middlewares/FreeRTOS/tasks.c(6862): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 6862 |             configASSERT( pxTCB->uxMutexesHeld );
+      |                                                 ^
+../Middlewares/FreeRTOS/tasks.c(6955): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 6955 |             configASSERT( pxTCB->uxMutexesHeld );
+      |                                                 ^
+../Middlewares/FreeRTOS/tasks.c(6982): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 6982 |                     configASSERT( pxTCB != pxCurrentTCB );
+      |                                                          ^
+../Middlewares/FreeRTOS/tasks.c(7806): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 7806 |         configASSERT( uxIndexToWaitOn < configTASK_NOTIFICATION_ARRAY_ENTRIES );
+      |                                                                                ^
+../Middlewares/FreeRTOS/tasks.c(7856): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 7856 |                 taskYIELD_WITHIN_API();
+      |                                       ^
+../Middlewares/FreeRTOS/tasks.c(7909): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 7909 |         configASSERT( uxIndexToWaitOn < configTASK_NOTIFICATION_ARRAY_ENTRIES );
+      |                                                                                ^
+../Middlewares/FreeRTOS/tasks.c(7963): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 7963 |                 taskYIELD_WITHIN_API();
+      |                                       ^
+../Middlewares/FreeRTOS/tasks.c(8025): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8025 |         configASSERT( uxIndexToNotify < configTASK_NOTIFICATION_ARRAY_ENTRIES );
+      |                                                                                ^
+../Middlewares/FreeRTOS/tasks.c(8026): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8026 |         configASSERT( xTaskToNotify );
+      |                                      ^
+../Middlewares/FreeRTOS/tasks.c(8079): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8079 |                     configASSERT( xTickCount == ( TickType_t ) 0 );
+      |                                                                   ^
+../Middlewares/FreeRTOS/tasks.c(8074): warning: default label in switch which covers all enumeration values [-Wcovered-switch-default]
+ 8074 |                 default:
+      |                 ^
+../Middlewares/FreeRTOS/tasks.c(8094): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8094 |                 configASSERT( listLIST_ITEM_CONTAINER( &( pxTCB->xEventListItem ) ) == NULL );
+      |                                                                                              ^
+../Middlewares/FreeRTOS/tasks.c(8147): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8147 |         configASSERT( xTaskToNotify );
+      |                                      ^
+../Middlewares/FreeRTOS/tasks.c(8148): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8148 |         configASSERT( uxIndexToNotify < configTASK_NOTIFICATION_ARRAY_ENTRIES );
+      |                                                                                ^
+../Middlewares/FreeRTOS/tasks.c(8222): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8222 |                     configASSERT( xTickCount == ( TickType_t ) 0 );
+      |                                                                   ^
+../Middlewares/FreeRTOS/tasks.c(8217): warning: default label in switch which covers all enumeration values [-Wcovered-switch-default]
+ 8217 |                 default:
+      |                 ^
+../Middlewares/FreeRTOS/tasks.c(8233): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8233 |                 configASSERT( listLIST_ITEM_CONTAINER( &( pxTCB->xEventListItem ) ) == NULL );
+      |                                                                                              ^
+../Middlewares/FreeRTOS/tasks.c(8325): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8325 |         configASSERT( xTaskToNotify );
+      |                                      ^
+../Middlewares/FreeRTOS/tasks.c(8326): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8326 |         configASSERT( uxIndexToNotify < configTASK_NOTIFICATION_ARRAY_ENTRIES );
+      |                                                                                ^
+../Middlewares/FreeRTOS/tasks.c(8367): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8367 |                 configASSERT( listLIST_ITEM_CONTAINER( &( pxTCB->xEventListItem ) ) == NULL );
+      |                                                                                              ^
+../Middlewares/FreeRTOS/tasks.c(8455): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8455 |         configASSERT( uxIndexToClear < configTASK_NOTIFICATION_ARRAY_ENTRIES );
+      |                                                                               ^
+../Middlewares/FreeRTOS/tasks.c(8460): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8460 |         configASSERT( pxTCB != NULL );
+      |                                      ^
+../Middlewares/FreeRTOS/tasks.c(8495): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8495 |         configASSERT( uxIndexToClear < configTASK_NOTIFICATION_ARRAY_ENTRIES );
+      |                                                                               ^
+../Middlewares/FreeRTOS/tasks.c(8500): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 8500 |         configASSERT( pxTCB != NULL );
+      |                                      ^
+75 warnings generated.
+compiling tasks.c...
+linking...
+.\OBJ\C1.axf: error: L6050U: The code size of this image (50120 bytes) exceeds the maximum allowed for this version of the linker.
+Finished: 0 information, 0 warning, 0 error and 1 fatal error messages.
+".\OBJ\C1.axf" - 1 Error(s), 361 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:04

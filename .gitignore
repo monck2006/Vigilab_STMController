@@ -1,0 +1,19 @@
+# 编译产物
+C1_Keil/Project/OBJ/
+C1_Keil/Project/LIST/
+C1_GCC/build/
+
+# Python
+__pycache__/
+*.pyc
+
+# Keil 生成的临时文件
+*.bak
+*.dep
+*.scvd
+*.uvguix.*
+
+# 系统文件
+Thumbs.db
+desktop.ini
+.DS_Store

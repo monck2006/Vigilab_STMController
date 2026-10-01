@@ -1,0 +1,10 @@
+内部项目使用声明
+
+本仓库为「实验室安全智能巡检机器人」大创项目 C1 运动控制部分的内部资料，
+仅供项目团队成员及指导教师使用。未经项目负责人书面同意，请勿对外传播、
+复制或用于其他用途。
+
+第三方组件：
+  - STM32F4xx_HAL_Driver / CMSIS：STMicroelectronics，遵循其随附的授权条款
+  - FreeRTOS Kernel：MIT License，Copyright (C) Amazon.com, Inc. or its affiliates
+这些组件保留原始版权声明，仅作引用。
