@@ -4,7 +4,7 @@
 # Output: build\C1.elf  build\C1.hex  build\C1.bin
 
 param(
-    [string]$GccPath = 'D:\xpack-arm-none-eabi-gcc-13.3.1-1.1\bin'
+    [string]$GccPath = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -12,6 +12,17 @@ $ErrorActionPreference = 'Stop'
 $root  = Split-Path -Parent $MyInvocation.MyCommand.Path
 $keil  = Join-Path (Split-Path -Parent $root) 'C1_Keil'
 $build = Join-Path $root 'build'
+
+if ([string]::IsNullOrWhiteSpace($GccPath)) {
+    $gccCommand = Get-Command 'arm-none-eabi-gcc.exe' -ErrorAction SilentlyContinue
+    if (-not $gccCommand) {
+        $gccCommand = Get-Command 'arm-none-eabi-gcc' -ErrorAction SilentlyContinue
+    }
+    if (-not $gccCommand) {
+        throw 'arm-none-eabi-gcc not found on PATH; rerun with -GccPath <toolchain bin directory>'
+    }
+    $GccPath = Split-Path -Parent $gccCommand.Source
+}
 
 $cc   = Join-Path $GccPath 'arm-none-eabi-gcc.exe'
 $objc = Join-Path $GccPath 'arm-none-eabi-objcopy.exe'

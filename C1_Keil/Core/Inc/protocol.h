@@ -37,7 +37,8 @@ enum {
     ST_INIT  = 0x00,
     ST_IDLE  = 0x01,
     ST_RUN   = 0x02,
-    ST_FAULT = 0x03
+    ST_FAULT = 0x03,
+    ST_STOPPING = 0x04
 };
 
 /* ---- 故障码 ---- */

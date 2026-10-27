@@ -9,6 +9,8 @@ serial_tester.py - 电脑端串口测试工具（C1 协议）
   python serial_tester.py -p COM3 monitor          # 被动监听状态上报（20Hz）
   python serial_tester.py -p COM3 status           # 查询一次状态
   python serial_tester.py -p COM3 speed 200 200    # 左右轮各 200 mm/s
+  python serial_tester.py -p COM3 drive 50 50      # 持续发送低速命令，Ctrl+C 软停
+  python serial_tester.py -p COM3 pid 0.3 2.0      # 设置 Kp=0.3, Ki=2.0/s
   python serial_tester.py -p COM3 stop
   python serial_tester.py -p COM3 estop
   python serial_tester.py -p COM3 clear
@@ -100,9 +102,10 @@ def send(ser, frame: bytes):
     print("已发送: " + proto.hexs(frame))
 
 
-def read_frames(ser, seconds: float):
+def read_frames(ser, seconds: float, parser=None):
     """读取一段时间内的所有合法帧"""
-    parser = proto.Parser()
+    if parser is None:
+        parser = proto.Parser()
     frames = []
     t0 = time.time()
     while time.time() - t0 < seconds:
@@ -120,8 +123,10 @@ def print_frames(frames):
         if cmd == proto.CMD_STATUS:
             st = proto.decode_status(data)
             if st:
+                voltage = ("未知" if st["vbus_mV"] is None else
+                           f"{st['vbus_mV'] / 1000:.2f}V")
                 print(f"[{name}] 状态={st['state']:<5} 故障={st['fault']:<8} "
-                      f"电压={st['vbus_mV']/1000:.2f}V "
+                      f"电压={voltage} "
                       f"左轮={st['v_left_mmps']:>5}mm/s 右轮={st['v_right_mmps']:>5}mm/s "
                       f"左里程={st['odo_left_mm']:>8}mm 右里程={st['odo_right_mm']:>8}mm")
         else:
@@ -132,8 +137,8 @@ def main():
     ap = argparse.ArgumentParser(description="C1 运动控制串口测试工具")
     ap.add_argument("-p", "--port", help="串口号，例如 COM3")
     ap.add_argument("-b", "--baud", type=int, default=115200)
-    ap.add_argument("action", help="selftest / monitor / status / speed / stop / estop / clear / reset-odo")
-    ap.add_argument("args", nargs="*", help="speed 命令需要两个数：左轮 右轮 (mm/s)")
+    ap.add_argument("action", help="selftest / monitor / status / speed / drive / pid / stop / estop / clear / reset-odo")
+    ap.add_argument("args", nargs="*", help="当前动作所需的参数，例如左右轮速度或 PI 参数")
     a = ap.parse_args()
 
     if a.action == "selftest":
@@ -151,6 +156,45 @@ def main():
             ser.close()
         return
 
+    if a.action == "drive":
+        if len(a.args) < 2:
+            print("用法： drive <左轮 mm/s> <右轮 mm/s>")
+            sys.exit(1)
+        v_left, v_right = int(a.args[0]), int(a.args[1])
+        ser = open_port(a.port, a.baud)
+        rx_parser = proto.Parser()
+        seq = int(time.time()) & 0xFF
+        print(f"持续发送速度 {v_left}/{v_right} mm/s；按 Ctrl+C 发送软停。")
+        try:
+            while True:
+                send(ser, proto.pack_speed(seq, v_left, v_right))
+                seq = (seq + 1) & 0xFF
+                print_frames(read_frames(ser, 0.1, rx_parser))
+        except KeyboardInterrupt:
+            print("\n发送软停命令……")
+            send(ser, proto.pack(seq, proto.CMD_STOP))
+            deadline = time.monotonic() + 2.0
+            while time.monotonic() < deadline:
+                # 停车期间续发心跳，让下位机有时间按斜坡减速。
+                ser.write(proto.pack(seq, proto.CMD_HEARTBEAT))
+                ser.flush()
+                seq = (seq + 1) & 0xFF
+                frames = read_frames(ser, 0.1, rx_parser)
+                print_frames(frames)
+                reached_idle = False
+                for _, cmd, data in frames:
+                    if cmd == proto.CMD_STATUS:
+                        status = proto.decode_status(data)
+                        if status and status["state"] == "IDLE":
+                            reached_idle = True
+                            break
+                if reached_idle:
+                    print("下位机已回到 IDLE。")
+                    break
+        finally:
+            ser.close()
+        return
+
     seq = int(time.time()) & 0xFF
     if a.action == "status":
         frame = proto.pack(seq, proto.CMD_QUERY)
@@ -159,6 +203,15 @@ def main():
             print("用法： speed <左轮 mm/s> <右轮 mm/s>")
             sys.exit(1)
         frame = proto.pack_speed(seq, int(a.args[0]), int(a.args[1]))
+    elif a.action == "pid":
+        if len(a.args) < 2:
+            print("用法： pid <Kp 0..2> <Ki每秒 0..20>")
+            sys.exit(1)
+        try:
+            frame = proto.pack_pid(seq, float(a.args[0]), float(a.args[1]))
+        except ValueError as error:
+            print(error)
+            sys.exit(1)
     elif a.action == "stop":
         frame = proto.pack(seq, proto.CMD_STOP)
     elif a.action == "estop":

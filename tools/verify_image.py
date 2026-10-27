@@ -1,8 +1,12 @@
-"""校验固件镜像：Intel HEX 校验和 + 向量表 + 地址范围"""
+"""校验固件镜像：Intel HEX 校验和 + 向量表 + 地址范围。
+
+默认检查 C1_GCC/build/C1.hex，也可以把其他 HEX 文件路径作为参数传入。
+"""
+import argparse
 import sys
 from pathlib import Path
 
-HEX = Path(r"C:\Users\34983\Desktop\大创\C1_运动控制\C1_GCC\build\C1.hex")
+DEFAULT_HEX = Path(__file__).resolve().parents[1] / "C1_GCC" / "build" / "C1.hex"
 
 
 def parse_hex(path):
@@ -29,10 +33,17 @@ def parse_hex(path):
 
 
 def main():
-    if not HEX.exists():
-        print("找不到 C1.hex：", HEX)
+    parser = argparse.ArgumentParser(description="检查 C1 Intel HEX 镜像")
+    parser.add_argument("hex", nargs="?", type=Path, default=DEFAULT_HEX,
+                        help="HEX 文件路径（默认 C1_GCC/build/C1.hex）")
+    hex_path = parser.parse_args().hex
+    if not hex_path.exists():
+        print("找不到 HEX 文件：", hex_path)
         return 1
-    data, lines, bad = parse_hex(HEX)
+    data, lines, bad = parse_hex(hex_path)
+    if not data:
+        print("HEX 文件中没有可用的数据记录：", hex_path)
+        return 1
     lo, hi = min(data), max(data)
 
     print(f"HEX 记录数     : {lines}")

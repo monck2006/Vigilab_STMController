@@ -11,7 +11,6 @@
 
 extern UART_HandleTypeDef huart3;
 extern TIM_HandleTypeDef  htim7;
-extern DMA_HandleTypeDef  hdma_usart3_tx;
 
 /* FreeRTOS GCC 端口的滴答处理函数（在 port.c 中定义） */
 extern void xPortSysTickHandler(void);
@@ -74,7 +73,5 @@ void TIM7_IRQHandler(void)
     HAL_TIM_IRQHandler(&htim7);
 }
 
-void DMA1_Stream3_IRQHandler(void)
-{
-    HAL_DMA_IRQHandler(&hdma_usart3_tx);
-}
+/* 当前串口发送使用单一 Telemetry 任务轮询发送，不启用 DMA1 Stream3。 */
+void DMA1_Stream3_IRQHandler(void) { }

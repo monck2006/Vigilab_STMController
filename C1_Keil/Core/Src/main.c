@@ -16,7 +16,6 @@
 #include "task.h"
 
 UART_HandleTypeDef huart3;
-DMA_HandleTypeDef  hdma_usart3_tx;
 TIM_HandleTypeDef  htim2;
 TIM_HandleTypeDef  htim3;
 TIM_HandleTypeDef  htim7;
@@ -26,7 +25,6 @@ IWDG_HandleTypeDef hiwdg;
 static uint8_t s_rx_byte;
 
 static void MX_GPIO_Init(void);
-static void MX_DMA_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_TIM2_Init(void);
@@ -40,7 +38,6 @@ int main(void)
     SystemClock_Config();
 
     MX_GPIO_Init();
-    MX_DMA_Init();
     MX_USART3_UART_Init();
     MX_TIM3_Init();
     MX_TIM2_Init();
@@ -50,12 +47,14 @@ int main(void)
 
     App_Init();                                     /* 建队列、建任务、初始化电机与编码器 */
 
-    HAL_UART_Receive_IT(&huart3, &s_rx_byte, 1);
-    HAL_TIM_Base_Start_IT(&htim7);                  /* 启动 1kHz 节拍 */
-
     vTaskStartScheduler();
 
     while (1) { }                                   /* 正常情况下不会到这里 */
+}
+
+void App_StartUartRx(void)
+{
+    (void)HAL_UART_Receive_IT(&huart3, &s_rx_byte, 1u);
 }
 
 /* ---------------- 中断回调 ---------------- */
@@ -155,7 +154,7 @@ static void MX_TIM3_Init(void)
     htim3.Instance = TIM3;
     htim3.Init.Prescaler = 0;
     htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-    htim3.Init.Period = PWM_ARR;
+    htim3.Init.Period = MOTOR_PWM_ARR;
     htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
     htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
     if (HAL_TIM_PWM_Init(&htim3) != HAL_OK) {
@@ -249,13 +248,11 @@ static void MX_IWDG_Init(void)
     }
 }
 
-/* 仅初始化 BTS7960 的使能脚（其余引脚在各自 MspInit 里配置） */
+/* 只处理与本工程复用冲突有关的 GPIO；EN 默认由驱动板接线拉高。 */
 static void MX_GPIO_Init(void)
 {
     GPIO_InitTypeDef gi = {0};
 
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-    __HAL_RCC_GPIOF_CLK_ENABLE();
     __HAL_RCC_GPIOG_CLK_ENABLE();
 
     /*
@@ -269,23 +266,4 @@ static void MX_GPIO_Init(void)
     gi.Pull = GPIO_NOPULL;
     gi.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(GPIOG, &gi);
-
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(GPIOF, GPIO_PIN_11, GPIO_PIN_RESET);
-
-    gi.Pin = GPIO_PIN_5;
-    gi.Mode = GPIO_MODE_OUTPUT_PP;
-    gi.Pull = GPIO_NOPULL;
-    gi.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(GPIOA, &gi);
-
-    gi.Pin = GPIO_PIN_11;
-    HAL_GPIO_Init(GPIOF, &gi);
-}
-
-static void MX_DMA_Init(void)
-{
-    __HAL_RCC_DMA1_CLK_ENABLE();
-    HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 6, 0);
-    HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
 }

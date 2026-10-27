@@ -1,57 +1,39 @@
-# C1 固件（STM32F407ZGT6 + FreeRTOS + HAL）
+# C1 外设配置参考
 
-本目录存放 C1 的应用层代码。开发方式：用 STM32CubeMX 生成基础工程（时钟、USART3、TIM3、TIM2、TIM8、IWDG、FreeRTOS），再把这里的文件加进去。
+当前仓库直接在 `main.c` 和 `stm32f4xx_hal_msp.c` 初始化外设；本文件用于重建工程或核对板级设置。不要按旧版 DMA/多任务配置照抄。
 
-## 目录
+## FreeRTOS 与中断
 
-```
-firmware/
-  Core/Inc/config.h        全部可调参数（机械、控制、安全、协议），标定后只改这一个文件
-  Core/Inc/protocol.h      上下位机协议：帧结构、命令码、状态码
-  Core/Src/protocol.c      协议实现：CRC16-Modbus、逐字节状态机解析、打包
-  Core/Inc/motor.h         BTS7960 驱动层接口
-  Core/Src/motor.c         PWM 输出、正反转、刹车、自由停车、EN 控制
-  Core/Inc/encoder.h       编码器与里程计接口
-  Core/Src/encoder.c       TIM2/TIM8 编码器模式读数、测速、里程累计
-  Core/Inc/app_tasks.h     中断与任务的接口
-  Core/Src/app_tasks.c     FreeRTOS 五个任务、命令处理、状态上报、安全监控
-```
-
-## 编译验证
-
-四个 .c 文件已用 Keil MDK 自带的 armclang（`--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16`）
-配 ST 官方 HAL 头文件编译通过，`-Wall -Wextra` 零警告。编译时需定义 `STM32F407xx` 与 `USE_HAL_DRIVER`。
-
-协议层另外做了逻辑自检：正常帧解析正确、单字节翻转能检出 CRC 错误、帧前垃圾字节能自动重同步。
-
-## CubeMX 里 FreeRTOS 的建议配置
-
-| 配置项 | 建议值 |
+| 项目 | 当前需要 |
 | --- | --- |
-| `configTICK_RATE_HZ` | 1000 |
-| `configMAX_PRIORITIES` | 8（任务用到 1～5） |
-| `configTOTAL_HEAP_SIZE` | 30 KB（FreeRTOSConfig.h 里改） |
-| `configUSE_PREEMPTION` | 1（抢占式） |
-| `configCHECK_FOR_STACK_OVERFLOW` | 2 |
-| `configMINIMAL_STACK_SIZE` | 128 |
-| 中断优先级 | USART3=5、TIM7=6，且都 ≥ `configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY`(5) |
+| `configTICK_RATE_HZ` | 1000 Hz |
+| 抢占调度 | 开启 |
+| `configMAX_PRIORITIES` | 至少 6（控制任务优先级 5，Telemetry 2） |
+| `configCHECK_FOR_STACK_OVERFLOW` | 建议设为 2 |
+| USART3 中断优先级 | 5，允许调用 `xQueueSendFromISR` |
+| TIM7 中断优先级 | 6，允许调用 FreeRTOS 任务通知 FromISR |
 
-## CubeMX 需要配置的外设
+FreeRTOS API 可调用的中断优先级数值需不小于 `configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY`（当前为 5）。
+
+## 外设
 
 | 外设 | 配置 |
 | --- | --- |
-| RCC | HSE 8MHz → PLL → SYSCLK 168MHz |
-| USART3 | 115200 8N1，TX=PB10、RX=PB11；开 DMA（RX 循环、TX 普通）+ 空闲中断 |
-| TIM3 | PWM 模式，CH1=PB4、CH2=PB5、CH3=PB0、CH4=PB1；20kHz，ARR=4199（84MHz 时钟） |
-| TIM2 | Encoder Mode TI12，CH1=PA15、CH2=PB3；32 位自动重装 |
-| TIM8 | Encoder Mode TI12，CH1=PC6、CH2=PC7 |
-| TIM7 | 1kHz 定时中断，作为控制节拍 |
-| IWDG | 1s 超时 |
-| SYS | 调试选 **Serial Wire**（不要选 JTAG，PA15/PB3/PB4 被占用） |
+| RCC | HSE 8 MHz，SYSCLK 168 MHz；APB1 42 MHz，APB2 84 MHz |
+| USART3 | PB10 TX、PB11 RX；115200、8N1；逐字节接收中断；发送由 Telemetry 任务轮询完成，不启用 TX DMA |
+| TIM3 | PWM CH1=PB4、CH2=PB5、CH3=PB0、CH4=PB1；84 MHz 计时输入、ARR=4199、PWM 约 20 kHz |
+| TIM2 | TI12 编码器模式，CH1=PA15、CH2=PB3；32 位计数 |
+| TIM8 | TI12 编码器模式，CH1=PC6、CH2=PC7；16 位计数 |
+| TIM7 | 1 kHz 更新中断；调度器启动后由 Control 任务开始运行 |
+| IWDG | 当前预分频 64、重装值 625；控制任务每 500 ms 左右刷新 |
+| SYS Debug | Serial Wire / SWD；不要使用完整 JTAG |
 
-## 上电顺序
+## 引脚复用检查
 
-1. 先接 12V 电池 → 底板上电 → 测 5V / 3.3V 正常；
-2. 再接 STM32 开发板（杜邦线供电或 USB）；
-3. 最后接电机（避免上电瞬间抖动导致误转）；
-4. 首次调试建议先不接 BTS7960 的电源，只看串口通信与编码器读数。
+- PB4/PB5 同时连板载 W25Q128，PB0/PB1 与触摸屏复用。使用这些脚输出 PWM 时，相关板载功能不得同时启用；固件把 Flash 片选 PG8 拉高。
+- PA15/PB3 兼任 JTAG，选择 SWD 调试。
+- PC6/PC7 同时是 USART6，使用 TIM8 编码器时不能再用 USART6。
+- PA5/PF11 与触摸屏复用，默认不配置为 BTS7960 EN；驱动板 EN 按实际模块接线拉高。
+- PA0 是 UART4_TX 引出，默认不控制电机电源开关。
+
+如果重建工程，先确保 `C1_Keil/Core` 下应用源码只加入一次，并保留与 Keil/GCC 一致的 HAL、CMSIS 和 FreeRTOS 配置。

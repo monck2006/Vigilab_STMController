@@ -29,10 +29,14 @@ CMD_NAME = {
     CMD_HEARTBEAT: "心跳", CMD_STATUS: "状态上报", CMD_QUERY: "查询", CMD_ACK: "应答",
 }
 
-STATE_NAME = {0x00: "INIT", 0x01: "IDLE", 0x02: "RUN", 0x03: "FAULT"}
+STATE_NAME = {
+    0x00: "INIT", 0x01: "IDLE", 0x02: "RUN", 0x03: "FAULT",
+    0x04: "STOPPING",
+}
 FAULT_NAME = {
     0x00: "正常", 0x01: "通信超时停车", 0x02: "急停锁定", 0x03: "堵转",
-    0x04: "过流限幅", 0x05: "电池欠压", 0x06: "编码器异常",
+    0x04: "保留-过流未实现", 0x05: "保留-欠压未实现",
+    0x06: "保留-编码器诊断未实现",
 }
 
 
@@ -56,6 +60,16 @@ def pack(seq: int, cmd: int, data: bytes = b"") -> bytes:
 def pack_speed(seq: int, v_left: int, v_right: int) -> bytes:
     import struct
     return pack(seq, CMD_SET_SPEED, struct.pack("<hh", int(v_left), int(v_right)))
+
+
+def pack_pid(seq: int, kp: float, ki_per_second: float) -> bytes:
+    """在线设置 PI 参数；固件范围 Kp=0..2，Ki=0..20 /s。"""
+    import struct
+    kp_raw = round(float(kp) * 1000)
+    ki_raw = round(float(ki_per_second) * 1000)
+    if not (0 <= kp_raw <= 2000 and 0 <= ki_raw <= 20000):
+        raise ValueError("PI 参数超出范围：Kp 0..2，Ki 0..20 /s")
+    return pack(seq, CMD_SET_PID, struct.pack("<hh", kp_raw, ki_raw))
 
 
 class Parser:
@@ -125,20 +139,21 @@ def parse_all(data: bytes):
 def decode_status(data: bytes):
     """把状态帧的数据域解成可读 dict"""
     import struct
-    if len(data) < 17:
+    if len(data) != 17:
         return None
-    state, fault, vbus = data[0], data[1], struct.unpack_from("<H", data, 2)[0]
+    state, fault, vbus_raw = data[0], data[1], struct.unpack_from("<H", data, 2)[0]
     vl, vr = struct.unpack_from("<hh", data, 4)
     ol, orr = struct.unpack_from("<ii", data, 8)
     return {
         "state": STATE_NAME.get(state, f"0x{state:02X}"),
         "fault": FAULT_NAME.get(fault, f"0x{fault:02X}"),
-        "vbus_mV": vbus,
+        # 0xFFFF means the firmware has no real battery-voltage ADC sample.
+        "vbus_mV": None if vbus_raw == 0xFFFF else vbus_raw,
         "v_left_mmps": vl,
         "v_right_mmps": vr,
         "odo_left_mm": ol,
         "odo_right_mm": orr,
-        "cnt": data[16],
+        "flags": data[16],
     }
 
 

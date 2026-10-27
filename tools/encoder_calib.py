@@ -1,8 +1,7 @@
 """
 encoder_calib.py - 里程标定工具
 
-作用：用"实际走了多远"和"板子报了多少里程"对照，反推真实的比例系数，
-      顺便确认编码器到底是 11 线还是 13 线。
+作用：用"实际走了多远"和"板子报了多少里程"对照，估算每轮编码器计数的修正值。
 
 为什么要标定：里程精度由 编码器线数 × 减速比 × 轮径 三者共同决定，
       任何一项有偏差，车跑远了都会累积误差；C3 的建图和定位全靠它。
@@ -14,13 +13,15 @@ encoder_calib.py - 里程标定工具
   2) 脚本先发"里程清零"；
   3) 用遥控或手推让车沿直线走一段（越远越准，建议 2 米以上）；
   4) 量出实际直线距离，输入脚本；
-  5) 脚本给出修正后的参数。
+      5) 脚本给出每轮计数的初步修正参考值。
 
 依赖：pip install pyserial
 """
 import argparse
+import re
 import sys
 import time
+from pathlib import Path
 
 import proto
 
@@ -29,11 +30,17 @@ try:
 except ImportError:
     serial = None
 
-# 当前固件里 config.h 的设定值
-ENC_PPR = 11
-ENC_MULT = 4
-GEAR_RATIO = 56.0
-WHEEL_DIA_MM = 100.0
+CONFIG_PATH = Path(__file__).resolve().parents[1] / "C1_Keil" / "Core" / "Inc" / "config.h"
+
+
+def read_firmware_config():
+    """读取固件当前轮径和每轮计数，避免工具里再维护一份旧参数。"""
+    source = CONFIG_PATH.read_text(encoding="utf-8")
+    wheel = re.search(r"^\s*#define\s+WHEEL_DIAMETER_MM\s+([0-9.]+)f?", source, re.M)
+    counts = re.search(r"^\s*#define\s+ENCODER_COUNTS_PER_WHEEL_REV\s+(\d+)u?", source, re.M)
+    if not wheel or not counts:
+        raise RuntimeError(f"无法从 {CONFIG_PATH} 读取轮径或每轮编码器计数")
+    return float(wheel.group(1)), int(counts.group(1))
 
 
 def read_odo(ser, timeout=2.0):
@@ -92,24 +99,27 @@ def main():
         d_real = a.distance
         if d_real is None:
             d_real = float(input("请输入实际直线距离 (mm)："))
-
-        avg = (dl + dr) / 2.0
-        if avg <= 0:
-            print("报告里程为 0 或负值：检查编码器接线（A/B 是否接反）与轮子是否打滑。")
+        if d_real <= 0:
+            print("实际距离必须大于 0 mm。")
             sys.exit(1)
+
+        if dl == 0 or dr == 0 or dl * dr < 0:
+            print("左右里程为 0 或方向相反：先检查编码器接线、方向和车轮是否转动。")
+            sys.exit(1)
+
+        avg = (abs(dl) + abs(dr)) / 2.0
 
         k = d_real / avg
         print(f"\n修正系数 k = {k:.4f}")
         if 0.98 <= k <= 1.02:
             print("偏差在 2% 以内，参数基本正确，可以不用改。")
         else:
-            cur_mm_per_cnt = 3.14159265 * WHEEL_DIA_MM / (ENC_PPR * ENC_MULT * GEAR_RATIO)
-            print(f"当前 MM_PER_COUNT = {cur_mm_per_cnt:.5f} mm/计数")
-            print(f"应改为          = {cur_mm_per_cnt * k:.5f} mm/计数")
-            print("\n两种改法（改其一即可，改完重新编译）：")
-            print(f"  ① 按轮径修正：WHEEL_DIA_MM  {WHEEL_DIA_MM:.1f} -> {WHEEL_DIA_MM * k:.1f}")
-            print(f"  ② 按编码器线数修正：ENC_PPR {ENC_PPR} -> {ENC_PPR / k:.2f}")
-            print("     如果算出来接近整数（比如 12.8 接近 13），说明编码器实际是那个线数。")
+            wheel_dia_mm, counts_per_rev = read_firmware_config()
+            corrected_counts = counts_per_rev / k
+            print(f"固件当前轮径：{wheel_dia_mm:.1f} mm")
+            print(f"固件当前每轮计数：{counts_per_rev} counts/rev")
+            print(f"建议实测并更新 ENCODER_COUNTS_PER_WHEEL_REV，初步参考值约 {corrected_counts:.0f}")
+            print("轮径应按实物测量，不要为了修正编码器比例而随意改轮径。")
     finally:
         ser.close()
 

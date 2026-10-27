@@ -1,64 +1,58 @@
 /**
- * config.h - C1 运动控制全部可调参数
+ * config.h - 首次上车前只需要重点检查这里的硬件参数。
  *
- * 标定或换电机后，只改这一个文件，其余代码不用动。
+ * 注意：编码器资料中的“16 PPR”没有说明是电机轴还是减速箱输出轴。
+ * 这里先按电机轴 16 PPR、A/B 四倍频、减速比 56:1 配置；请按实测校准。
  */
 #ifndef __CONFIG_H
 #define __CONFIG_H
 
-/* ===================== 1. 机械与电机参数 ===================== */
+/* 机械参数 */
+#define WHEEL_DIAMETER_MM              180.0f
+#define WHEEL_TRACK_MM                 428.0f
 
-#define ENC_PPR                 11      /* 编码器线数（单相每转脉冲）；若标定为 13 线改成 13 */
-#define ENC_MULT                4       /* 正交解码四倍频 */
-#define GEAR_RATIO              56.0f   /* 减速比 1:56（JGB37-555-1280-EN） */
-#define WHEEL_DIA_MM            180.0f  /* 驱动轮直径 mm（M1 机械设计：主动轮 Φ180） */
-#define WHEEL_TRACK_MM          428.0f  /* 两驱动轮中心距 mm（机械设计确定值） */
+/* 初始假设：16 脉冲/电机轴转 × 4 倍频 × 56 减速比 = 3584 计数/轮转 */
+#define ENCODER_COUNTS_PER_WHEEL_REV   3584u
+/* 左右轮方向归一化：正数保持，-1 表示反向。抬轮调试时两侧前进都应读正数。 */
+#define ENCODER_LEFT_SIGN              1
+#define ENCODER_RIGHT_SIGN             1
+/* 轮子正方向不一致时，在这里单独翻转电机输出方向。 */
+#define MOTOR_LEFT_SIGN                1
+#define MOTOR_RIGHT_SIGN               1
 
-/* 编码器计数：电机转一圈 44，轮子转一圈 2464 */
-#define ENC_CNT_PER_MOTOR_REV   ((int32_t)(ENC_PPR * ENC_MULT))
-#define ENC_CNT_PER_WHEEL_REV   ((int32_t)(ENC_CNT_PER_MOTOR_REV * GEAR_RATIO))
+/* 控制周期与输出 */
+#define CONTROL_PERIOD_MS              20u       /* 50 Hz 速度闭环 */
+#define VEL_MAX_MMPS                   1000      /* 上位机目标限幅 */
+#define ACC_MAX_MMPS2                  300.0f    /* 目标速度斜坡，mm/s^2 */
+#define MOTOR_PWM_ARR                  4199u     /* TIM3=84MHz，ARR=4199 时 PWM=20kHz */
+#define PWM_MAX_PERMILLE               1000      /* 1000 = 100% */
+#define PWM_DEADZONE_PERMILLE          0         /* 测出电机死区后再填写 */
 
-/* 轮子每转前进距离 mm = 565.5（Φ180） */
-#define WHEEL_CIRC_MM           (3.14159265f * WHEEL_DIA_MM)
-/* 每个编码器计数对应的位移 mm = 0.2295 */
-#define MM_PER_COUNT            (WHEEL_CIRC_MM / (float)ENC_CNT_PER_WHEEL_REV)
+/* 速度 PI：输出单位为 PWM 千分比，误差单位为 mm/s。
+ * I[k] = I[k-1] + Ki * error * dt。参数是起始值，必须实车低速调试。 */
+#define SPEED_PI_KP                    0.30f
+#define SPEED_PI_KI_PER_SECOND         2.0f
+#define SPEED_PI_INTEGRAL_LIMIT        400.0f
 
-/* ===================== 2. 控制参数 ===================== */
+/* 停车和通信保护 */
+#define STOP_SPEED_MMPS                20
+#define COMM_TIMEOUT_MS                500u
+#define COMM_LOST_MS                   1000u
+#define STATUS_REPORT_PERIOD_MS        50u       /* 20 Hz */
+#define UART_TX_TIMEOUT_MS              20u
 
-#define CTRL_TICK_HZ            1000            /* 控制节拍 1kHz（TIM7） */
-#define SPEED_LOOP_DIV          5               /* 每 5 个节拍跑一次速度环 = 200Hz */
-#define PWM_FREQ_HZ             20000           /* PWM 频率 20kHz */
-#define PWM_ARR                 4199            /* 84MHz / (4199+1) / 1 = 20kHz */
+/* 当前没有电流/电池 ADC 采样实现，不启用估算式过流和欠压保护。
+ * EN 引脚可能与开发板触摸屏复用，默认由驱动板端将 R_EN/L_EN 拉高。
+ * PA0 是开发板 UART4_TX，不能默认当作电源开关。 */
+#define MOTOR_USE_EN_PINS              0
+#define MOTOR_USE_POWER_SWITCH         0
+#define MOTOR_POWER_SWITCH_ACTIVE_HIGH 1
 
-#define VEL_MAX_MMPS            1000            /* 速度上限 mm/s（额定 1008，空载 1338） */
-#define ACC_MAX_MMPS2           500             /* 加速度上限 mm/s^2，用于软启动 */
-#define PWM_DEADZONE_PCT        8               /* 占空比死区，低于此值电机不转 */
+/* 编码器计数尚未实测前不启用堵转锁定，避免测速参数错误造成误停。 */
+#define STALL_DETECT_ENABLE            0
+#define STALL_DUTY_PERMILLE            300
+#define STALL_TIME_MS                  500u
 
-/* 速度环 PI（增量式），先用经验值，实车再调 */
-#define PID_KP                  0.30f
-#define PID_KI                  0.05f
-
-/* ===================== 3. 安全参数（受电池 10A 约束）===================== */
-
-#define COMM_TIMEOUT_MS         500     /* 通信超时 → 软停 */
-#define COMM_LOST_MS            1000    /* 继续丢失 → 急停锁定 */
-#define MOTOR_RATED_A           1.5f    /* 单电机额定电流 A（JGB37-555-1280-EN 参数表） */
-#define MOTOR_STALL_A           6.5f    /* 单电机堵转电流 A（同上） */
-#define BUS_CURRENT_LIMIT_A     8.0f    /* 母线限流阈值（电池持续 10A，留 2A 余量） */
-#define STALL_DUTY_PCT          30      /* 判定堵转的占空比下限 */
-#define STALL_TIME_MS           500     /* 堵转判定时间 */
-#define VBAT_UV_WARN_MV         10500   /* 欠压告警 10.5V */
-#define VBAT_UV_STOP_MV         10000   /* 欠压停机 10.0V */
-#define VBAT_DIVIDER            11.0f   /* 分压比，按实际采样电阻调整 */
-
-/* ===================== 4. 通信参数 ===================== */
-
-#define PROTO_BAUD              115200
-#define STATUS_REPORT_HZ        20      /* 状态帧上报频率 */
-#define FRAME_GAP_TIMEOUT_MS    10      /* 帧内字节间隔超时，超时丢弃该帧 */
-
-/* ===================== 5. 调试 ===================== */
-
-#define DBG_UART                1       /* 1=打开调试串口打印 */
+#define PROTO_BAUD                     115200u
 
 #endif /* __CONFIG_H */
